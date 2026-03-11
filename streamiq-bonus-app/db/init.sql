@@ -1,0 +1,21 @@
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE IF NOT EXISTS ARTIST (
+  artistID INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  country TEXT,
+  primaryGenre TEXT,
+  bio TEXT
+);
+
+CREATE TABLE IF NOT EXISTS ALBUM (
+  albumID INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT NOT NULL,
+  releaseDate TEXT,
+  albumType TEXT NOT NULL CHECK (albumType IN ('Single', 'EP', 'LP')),
+  coverImageURL TEXT,
+  artistID INTEGER NOT NULL,
+  FOREIGN KEY (artistID) REFERENCES ARTIST(artistID)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT
+);

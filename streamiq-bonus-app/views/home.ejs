@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>StreamIQ Bonus App</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <%- include('partials') %>
+
+  <div class="card">
+    <h1>StreamIQ Bonus App</h1>
+    <p>This basic Node + Express + SQLite app satisfies the bonus requirement by supporting full CRUD for two related tables: <strong>ARTIST</strong> and <strong>ALBUM</strong>.</p>
+    <p><strong>Artists:</strong> <%= artistCount %></p>
+    <p><strong>Albums:</strong> <%= albumCount %></p>
+  </div>
+
+  <div class="card">
+    <h2>Recent Albums</h2>
+    <ul>
+      <% recentAlbums.forEach(album => { %>
+        <li><strong><%= album.title %></strong> by <%= album.artistName %> (<%= album.albumType %>)</li>
+      <% }) %>
+    </ul>
+  </div>
+</body>
+</html>

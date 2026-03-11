@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>New Album</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <%- include('../partials') %>
+  <h1>Add Album</h1>
+  <form action="/albums" method="POST">
+    <label>Title</label>
+    <input name="title" required>
+
+    <label>Release Date</label>
+    <input name="releaseDate" placeholder="YYYY-MM-DD">
+
+    <label>Album Type</label>
+    <select name="albumType" required>
+      <option value="Single">Single</option>
+      <option value="EP">EP</option>
+      <option value="LP">LP</option>
+    </select>
+
+    <label>Cover Image URL</label>
+    <input name="coverImageURL">
+
+    <label>Artist</label>
+    <select name="artistID" required>
+      <% artists.forEach(artist => { %>
+        <option value="<%= artist.artistID %>"><%= artist.name %></option>
+      <% }) %>
+    </select>
+
+    <button type="submit">Create Album</button>
+  </form>
+</body>
+</html>

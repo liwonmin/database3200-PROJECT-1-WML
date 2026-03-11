@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Album</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <%- include('../partials') %>
+  <h1>Edit Album</h1>
+  <form action="/albums/<%= album.albumID %>?_method=PUT" method="POST">
+    <label>Title</label>
+    <input name="title" value="<%= album.title %>" required>
+
+    <label>Release Date</label>
+    <input name="releaseDate" value="<%= album.releaseDate || '' %>">
+
+    <label>Album Type</label>
+    <select name="albumType" required>
+      <option value="Single" <%= album.albumType === 'Single' ? 'selected' : '' %>>Single</option>
+      <option value="EP" <%= album.albumType === 'EP' ? 'selected' : '' %>>EP</option>
+      <option value="LP" <%= album.albumType === 'LP' ? 'selected' : '' %>>LP</option>
+    </select>
+
+    <label>Cover Image URL</label>
+    <input name="coverImageURL" value="<%= album.coverImageURL || '' %>">
+
+    <label>Artist</label>
+    <select name="artistID" required>
+      <% artists.forEach(artist => { %>
+        <option value="<%= artist.artistID %>" <%= artist.artistID === album.artistID ? 'selected' : '' %>><%= artist.name %></option>
+      <% }) %>
+    </select>
+
+    <button type="submit">Update Album</button>
+  </form>
+</body>
+</html>

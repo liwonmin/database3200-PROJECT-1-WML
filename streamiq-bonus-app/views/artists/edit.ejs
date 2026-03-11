@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Artist</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <%- include('../partials') %>
+  <h1>Edit Artist</h1>
+  <form action="/artists/<%= artist.artistID %>?_method=PUT" method="POST">
+    <label>Name</label>
+    <input name="name" value="<%= artist.name %>" required>
+
+    <label>Country</label>
+    <input name="country" value="<%= artist.country || '' %>">
+
+    <label>Primary Genre</label>
+    <input name="primaryGenre" value="<%= artist.primaryGenre || '' %>">
+
+    <label>Bio</label>
+    <textarea name="bio"><%= artist.bio || '' %></textarea>
+
+    <button type="submit">Update Artist</button>
+  </form>
+</body>
+</html>

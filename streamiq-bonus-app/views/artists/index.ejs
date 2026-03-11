@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Artists</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <%- include('../partials') %>
+  <h1>Artists</h1>
+  <p><a href="/artists/new">Add Artist</a></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Genre</th>
+        <th>Albums</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% artists.forEach(artist => { %>
+        <tr>
+          <td><%= artist.artistID %></td>
+          <td><%= artist.name %></td>
+          <td><%= artist.country || '' %></td>
+          <td><%= artist.primaryGenre || '' %></td>
+          <td><%= artist.albumCount %></td>
+          <td>
+            <a href="/artists/<%= artist.artistID %>/edit">Edit</a>
+            <form class="inline" action="/artists/<%= artist.artistID %>?_method=DELETE" method="POST">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>

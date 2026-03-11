@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>New Artist</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <%- include('../partials') %>
+  <h1>Add Artist</h1>
+  <form action="/artists" method="POST">
+    <label>Name</label>
+    <input name="name" required>
+
+    <label>Country</label>
+    <input name="country">
+
+    <label>Primary Genre</label>
+    <input name="primaryGenre">
+
+    <label>Bio</label>
+    <textarea name="bio"></textarea>
+
+    <button type="submit">Create Artist</button>
+  </form>
+</body>
+</html>

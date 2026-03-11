@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Albums</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <%- include('../partials') %>
+  <h1>Albums</h1>
+  <p><a href="/albums/new">Add Album</a></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Release Date</th>
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% albums.forEach(album => { %>
+        <tr>
+          <td><%= album.albumID %></td>
+          <td><%= album.title %></td>
+          <td><%= album.artistName %></td>
+          <td><%= album.releaseDate || '' %></td>
+          <td><%= album.albumType %></td>
+          <td>
+            <a href="/albums/<%= album.albumID %>/edit">Edit</a>
+            <form class="inline" action="/albums/<%= album.albumID %>?_method=DELETE" method="POST">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
